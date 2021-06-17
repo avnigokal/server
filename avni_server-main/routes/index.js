@@ -1,13 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const Rating = mongoose.model("Rating");
 const Interested = mongoose.model("Interested");
 
-// var kennel = require("../models/index");
 
 router.post("/", async (req, res) => {
-  //   console.log("sdfsdf");
   const { rating, category } = req.body;
   if (rating > 3) {
     Interested.find({}, function (err, result) {
@@ -33,10 +30,6 @@ router.post("/", async (req, res) => {
       }
     });
   }
-  //   const newRating = new Rating({ rating, category });
-  //   console.log(newRating);
-  // await newRating.save();
-  //   return res.send("hello");
 });
 router.get("/interested", async (req, res) => {
   Interested.find({}, function (err, result) {
